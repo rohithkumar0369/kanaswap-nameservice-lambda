@@ -78,7 +78,7 @@ module.exports.nameservice = async (event) => {
   let hashed_name = await solanaNameService.getHashedName(user_name)
   let account_key = await solanaNameService.getNameAccountKey(hashed_name);
   let available_main;
-  let available_dev;
+  let availableDev;
   let key;
 
   // checks tha availability of name in devnet
@@ -88,14 +88,14 @@ module.exports.nameservice = async (event) => {
     key = owner.owner
   } catch (err) {
     if (err == "Error: Unable to find the given account.") {
-      available_dev = 1
+      availableDev = 1
     } else {
-      available_dev = 0
+      availableDev = 0
     }
   }
-  console.log("available", available_dev)
+  console.log("available", availableDev)
 
-  if (available_dev) {
+  if (availableDev) {
     try {
       //devnet name creation
       let result_dev = await createName(connectionDevnet, user_name, user_pubkey, payer)

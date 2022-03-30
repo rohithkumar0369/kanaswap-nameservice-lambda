@@ -69,7 +69,7 @@ functions:
 #    Check the event documentation for details
     events:
      - httpApi:
-         path: /
+         path: /addNameService
          method: post
 #      - websocket: $connect
 #      - s3: ${env:BUCKET}
